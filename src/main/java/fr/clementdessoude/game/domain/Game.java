@@ -8,12 +8,12 @@ public class Game {
 
     public void roll(int pins) {
         if (isFirstRoll() || isLastFrameComplete()) {
-            Frame newFrame = new Frame();
+            Frame newFrame = new Frame(pins);
             frames.add(newFrame);
+        } else {
+            var frame = frames.getLast();
+            frame.setSecondRoll(pins);
         }
-
-        var frame = frames.getLast();
-        frame.addRoll(pins);
     }
 
     public int getScore() {

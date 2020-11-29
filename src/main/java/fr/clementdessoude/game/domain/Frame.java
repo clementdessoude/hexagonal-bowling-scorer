@@ -1,25 +1,31 @@
 package fr.clementdessoude.game.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 import lombok.Data;
 
 @Data
 public class Frame {
-    private List<Integer> rolls = new ArrayList<>();
+    private final int firstRoll;
+    private Optional<Integer> secondRoll = Optional.empty();
 
-    public int getRoll(int rollIndex) {
-        if (rollIndex >= rolls.size()) return 0;
-
-        return rolls.get(rollIndex);
+    public Frame(int firstRoll) {
+        this.firstRoll = firstRoll;
     }
 
-    public void addRoll(int pins) {
-        rolls.add(pins);
+    public int getFirstRoll() {
+        return firstRoll;
+    }
+
+    public int getSecondRoll() {
+        return secondRoll.orElse(0);
+    }
+
+    public void setSecondRoll(int pins) {
+        secondRoll = Optional.of(pins);
     }
 
     public boolean isComplete() {
-        return isStrike() || rolls.size() == 2;
+        return isStrike() || secondRoll.isPresent();
     }
 
     public int getScore(int firstNextRoll, int secondNextRoll) {
@@ -27,7 +33,7 @@ public class Frame {
     }
 
     private int getBasicScore() {
-        return getRollScore(0) + getRollScore(1);
+        return getFirstRoll() + getSecondRoll();
     }
 
     private int getAdditionalScore(int firstNextRoll, int secondNextRoll) {
@@ -42,17 +48,11 @@ public class Frame {
         return 0;
     }
 
-    private int getRollScore(int rollIndex) {
-        if (rollIndex >= rolls.size()) return 0;
-
-        return rolls.get(rollIndex);
-    }
-
     public boolean isStrike() {
-        return rolls.get(0) == 10;
+        return firstRoll == 10;
     }
 
     private boolean isSpare() {
-        return rolls.get(0) + rolls.get(1) == 10;
+        return !isStrike() && getFirstRoll() + getSecondRoll() == 10;
     }
 }

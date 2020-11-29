@@ -31,14 +31,14 @@ public class Frames {
         if (frameIndex + 1 < size()) {
             Frame nextFrame = frames.get(frameIndex + 1);
 
-            firstNextRoll = nextFrame.getRoll(0);
+            firstNextRoll = nextFrame.getFirstRoll();
             if (nextFrame.isStrike()) {
                 if (frameIndex + 2 < size()) {
                     Frame secondNextFrame = frames.get(frameIndex + 2);
-                    secondNextRoll = secondNextFrame.getRoll(0);
+                    secondNextRoll = secondNextFrame.getFirstRoll();
                 }
             } else {
-                secondNextRoll = nextFrame.getRoll(1);
+                secondNextRoll = nextFrame.getSecondRoll();
             }
         }
 
