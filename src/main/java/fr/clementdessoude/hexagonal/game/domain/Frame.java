@@ -1,9 +1,7 @@
-package fr.clementdessoude.game.domain;
+package fr.clementdessoude.hexagonal.game.domain;
 
 import java.util.Optional;
-import lombok.Data;
 
-@Data
 public class Frame {
     private final int firstRoll;
     private Optional<Integer> secondRoll = Optional.empty();

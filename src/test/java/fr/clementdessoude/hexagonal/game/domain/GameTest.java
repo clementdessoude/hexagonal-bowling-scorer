@@ -1,4 +1,4 @@
-package fr.clementdessoude.game.domain;
+package fr.clementdessoude.hexagonal.game.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 

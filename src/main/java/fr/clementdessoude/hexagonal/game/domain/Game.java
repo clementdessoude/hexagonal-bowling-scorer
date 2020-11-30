@@ -1,10 +1,21 @@
-package fr.clementdessoude.game.domain;
+package fr.clementdessoude.hexagonal.game.domain;
 
-import lombok.Data;
+import java.util.UUID;
+import lombok.Getter;
 
-@Data
 public class Game {
-    private Frames frames = new Frames();
+    @Getter
+    private final UUID id;
+
+    private final Frames frames = new Frames();
+
+    public Game() {
+        this(null);
+    }
+
+    public Game(UUID id) {
+        this.id = id;
+    }
 
     public void roll(int pins) {
         if (isFirstRoll() || isLastFrameComplete()) {

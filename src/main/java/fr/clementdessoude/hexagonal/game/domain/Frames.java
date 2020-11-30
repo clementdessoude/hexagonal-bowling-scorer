@@ -1,12 +1,10 @@
-package fr.clementdessoude.game.domain;
+package fr.clementdessoude.hexagonal.game.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import lombok.Data;
 
-@Data
 public class Frames {
-    private List<Frame> frames = new ArrayList<>();
+    private final List<Frame> frames = new ArrayList<>();
 
     public void add(Frame frame) {
         frames.add(frame);

@@ -1,0 +1,14 @@
+info:
+  version: 0.0.1
+
+spring:
+  application:
+    name: hexagonal
+
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+      write-dates-as-timestamps: false
+  date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
+
+application:
