@@ -1,4 +1,4 @@
-package fr.clementdessoude.hexagonal.game.secondary;
+package fr.clementdessoude.hexagonal.game.secondary.in_memory;
 
 import fr.clementdessoude.hexagonal.game.domain.Game;
 import fr.clementdessoude.hexagonal.game.domain.port.GameRepository;
@@ -7,7 +7,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.stereotype.Repository;
 
-@Repository
+//@Repository
 public class InMemoryGameRepository implements GameRepository {
     private final ConcurrentHashMap<UUID, Game> games = new ConcurrentHashMap<>();
 

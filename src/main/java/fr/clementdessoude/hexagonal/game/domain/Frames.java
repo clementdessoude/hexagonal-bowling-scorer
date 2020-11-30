@@ -2,8 +2,10 @@ package fr.clementdessoude.hexagonal.game.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
 
 public class Frames {
+    @Getter
     private final List<Frame> frames = new ArrayList<>();
 
     public void add(Frame frame) {

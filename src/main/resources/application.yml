@@ -5,6 +5,10 @@ spring:
   application:
     name: hexagonal
 
+  jpa:
+    hibernate:
+      ddl-auto: create
+
   jackson:
     serialization:
       fail-on-empty-beans: false

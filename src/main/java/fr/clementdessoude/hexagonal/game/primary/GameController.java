@@ -3,6 +3,8 @@ package fr.clementdessoude.hexagonal.game.primary;
 import fr.clementdessoude.hexagonal.game.domain.Game;
 import fr.clementdessoude.hexagonal.game.domain.exception.UnknownGameException;
 import fr.clementdessoude.hexagonal.game.domain.port.GameCenter;
+import fr.clementdessoude.hexagonal.game.primary.dto.GameDto;
+import fr.clementdessoude.hexagonal.game.primary.dto.GameMapper;
 import fr.clementdessoude.hexagonal.game.primary.dto.RollDto;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -17,11 +19,12 @@ import org.springframework.web.server.ResponseStatusException;
 @Slf4j
 public class GameController {
     private final GameCenter gameCenter;
+    private final GameMapper gameMapper;
 
     @PostMapping
-    public Game checkProjectIsAtStep() {
+    public GameDto checkProjectIsAtStep() {
         log.info("Create game !");
-        return gameCenter.startGame();
+        return gameMapper.map(gameCenter.startGame());
     }
 
     @GetMapping(path = "{gameId}/score")

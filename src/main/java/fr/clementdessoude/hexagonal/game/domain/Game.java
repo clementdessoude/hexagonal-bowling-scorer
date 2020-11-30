@@ -3,10 +3,9 @@ package fr.clementdessoude.hexagonal.game.domain;
 import java.util.UUID;
 import lombok.Getter;
 
+@Getter
 public class Game {
-    @Getter
     private final UUID id;
-
     private final Frames frames = new Frames();
 
     public Game() {
